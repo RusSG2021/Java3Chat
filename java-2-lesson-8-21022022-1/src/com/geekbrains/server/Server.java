@@ -7,6 +7,7 @@ import com.geekbrains.server.authorization.InMemoryAuthServiceImpl;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,6 +29,9 @@ public class Server {
             }
         } catch (IOException exception) {
             System.out.println("Ошибка в работе сервера");
+            exception.printStackTrace();
+        } catch (SQLException exception){
+            System.out.println("Ошибка в SQL-запросе");
             exception.printStackTrace();
         } finally {
             if (authService != null) {
